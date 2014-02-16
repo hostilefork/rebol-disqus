@@ -39,15 +39,6 @@ Rebol [
 do http://reb4.me/r3/altwebform.r
 
 
-;-- Bridge the as-yet-unmerged to mainline naming change :-/
-changed-function: if 10 = length? spec-of :function [
-	old-function: :function
-	function: :funct
-	unset 'funct
-	true
-]
-
-
 ;
 ; Disqus does dates as ISO-8601 dates, this is adapted from:
 ;
@@ -334,11 +325,4 @@ disqus: context bind [
 		system/script/args
 		system/script/header/settings
 	]
-]
-
-
-;-- Restore funct/function expectation of caller
-if changed-function [
-	funct: :function
-	function: :old-function
 ]
